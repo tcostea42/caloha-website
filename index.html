@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caloha Air Compliance LLC — OBD Testing Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-mid: #0d2137;
+  --navy-light: #112b42;
+  --teal: #2a9d8f;
+  --teal-light: #3fc1b0;
+  --teal-bright: #45d4c3;
+  --copper: #d4956b;
+  --copper-light: #e8b88a;
+  --copper-bright: #f0c896;
+  --gold: #c9a96e;
+  --text: #e4eef3;
+  --text-muted: #8ba4b5;
+  --border: rgba(42, 157, 143, 0.2);
+  --glow-teal: rgba(42, 157, 143, 0.35);
+  --glow-copper: rgba(212, 149, 107, 0.3);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy); color: var(--text); overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10, 22, 40, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 32px;
+}
+.nav-logo { height: 36px; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-muted); text-decoration: none;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--teal-light); }
+.nav-cta {
+  background: var(--teal) !important; color: #fff !important;
+  padding: 8px 20px !important; border-radius: 6px;
+  font-weight: 600 !important; transition: all 0.25s !important;
+  box-shadow: 0 2px 12px var(--glow-teal);
+}
+.nav-cta:hover { background: var(--teal-bright) !important; transform: translateY(-1px); }
+.mobile-toggle { display: none; cursor: pointer; color: var(--text); font-size: 24px; }
+
+/* HERO — full-width logo, no subtitle text */
+.hero {
+  padding-top: 70px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 40%, #0f2a45 70%, var(--navy) 100%);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(42,157,143,0.1), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 80%, rgba(212,149,107,0.06), transparent);
+}
+.hero-deco-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--copper), var(--teal-bright));
+}
+.hero-logo-wrap {
+  position: relative; z-index: 1;
+  width: 100%; overflow: hidden;
+  display: flex; justify-content: center;
+  padding: 24px 0 0;
+}
+.hero-logo {
+  width: 100%; max-width: 100%; height: auto;
+  display: block;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  text-align: center; padding: 24px 32px 48px;
+  max-width: 860px; margin: 0 auto;
+}
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(38px, 6vw, 68px); font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-bright), #7eecd8, var(--teal));
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1.1; margin-bottom: 16px;
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+.hero-sub {
+  font-size: 17px; color: var(--text-muted); line-height: 1.6; margin-bottom: 28px;
+  max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.hero-badges {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;
+}
+.hero-badge {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(42,157,143,0.12); border: 1px solid rgba(42,157,143,0.3);
+  padding: 8px 18px; border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 600; color: var(--teal-bright);
+}
+.hero-badge svg { width: 16px; height: 16px; fill: var(--teal-bright); }
+.hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 32px; border-radius: 8px;
+  text-decoration: none; display: inline-block;
+  transition: all 0.3s; cursor: pointer; border: none; letter-spacing: 0.5px;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal), var(--teal-bright));
+  color: #fff; box-shadow: 0 4px 24px var(--glow-teal);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--glow-teal); }
+.btn-outline {
+  background: transparent; color: var(--copper-bright);
+  border: 1px solid rgba(212,149,107,0.5);
+}
+.btn-outline:hover { border-color: var(--copper-bright); background: rgba(212,149,107,0.1); }
+
+/* WE COME TO YOU + SERVICE AREA */
+.mobile-service {
+  position: relative;
+  background: linear-gradient(135deg, rgba(42,157,143,0.06), rgba(212,149,107,0.03));
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 48px 32px;
+}
+.mobile-service::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: linear-gradient(180deg, var(--teal-bright), var(--copper));
+}
+.mobile-inner { max-width: 1060px; margin: 0 auto; }
+.mobile-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start;
+}
+.mobile-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: #fff; margin-bottom: 10px; letter-spacing: 0.5px;
+}
+.mobile-title span { color: var(--teal-bright); }
+.mobile-desc {
+  font-size: 15px; color: var(--text-muted); line-height: 1.8;
+}
+.mobile-desc strong { color: var(--text); }
+.mobile-highlight {
+  margin-top: 16px; padding: 12px 16px;
+  background: rgba(42,157,143,0.1); border-left: 3px solid var(--teal-bright);
+  border-radius: 0 8px 8px 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 600; color: var(--teal-bright);
+}
+
+.area-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px; font-weight: 700;
+  color: #fff; margin-bottom: 6px;
+}
+.area-title span { color: var(--copper-bright); }
+.area-subtitle {
+  font-size: 14px; color: var(--text-muted); margin-bottom: 20px;
+}
+.area-columns {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+}
+.area-col-header {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 700; color: var(--teal);
+  text-transform: uppercase; letter-spacing: 2px;
+  padding-bottom: 8px; margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.area-col {
+  padding-right: 12px;
+}
+.area-col li {
+  list-style: none;
+  font-size: 13px; color: var(--text-muted);
+  padding: 3px 0; position: relative;
+  padding-left: 12px;
+}
+.area-col li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--teal);
+}
+.area-note {
+  margin-top: 14px; font-size: 13px; color: var(--copper-light);
+  font-weight: 500;
+}
+
+/* SECTIONS — tighter spacing */
+section { padding: 56px 32px; }
+.section-inner { max-width: 960px; margin: 0 auto; }
+.section-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--teal-bright); margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 4vw, 40px); font-weight: 900;
+  color: #fff; margin-bottom: 14px; line-height: 1.15;
+}
+.section-desc {
+  font-size: 15px; color: var(--text-muted);
+  max-width: 600px; line-height: 1.7; margin-bottom: 32px;
+}
+
+/* VEHICLES */
+#vehicles {
+  background: linear-gradient(180deg, var(--navy), var(--navy-mid));
+  position: relative;
+}
+#vehicles::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.vehicle-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px;
+}
+.vehicle-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(42,157,143,0.15); border-radius: 12px;
+  padding: 24px; transition: all 0.35s;
+  position: relative; overflow: hidden;
+}
+.vehicle-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--teal-bright));
+  opacity: 0; transition: opacity 0.35s;
+}
+.vehicle-card:hover {
+  border-color: var(--teal); background: rgba(42,157,143,0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(42,157,143,0.15);
+}
+.vehicle-card:hover::before { opacity: 1; }
+.vehicle-card-icon { font-size: 28px; margin-bottom: 10px; }
+.vehicle-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px;
+}
+.vehicle-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.vehicle-note {
+  margin-top: 24px; padding: 18px 22px;
+  background: rgba(212,149,107,0.08);
+  border: 1px solid rgba(212,149,107,0.25);
+  border-left: 4px solid var(--copper);
+  border-radius: 0 10px 10px 0;
+  font-size: 13px; color: var(--text-muted); line-height: 1.7;
+}
+.vehicle-note strong { color: var(--copper-bright); }
+
+/* PRICING */
+#pricing {
+  background: var(--navy); position: relative;
+}
+#pricing::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.pricing-table-wrap {
+  background: linear-gradient(135deg, rgba(42,157,143,0.05), rgba(42,157,143,0.02));
+  border: 1px solid rgba(42,157,143,0.25); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 32px rgba(42,157,143,0.08);
+}
+.pricing-table { width: 100%; border-collapse: collapse; }
+.pricing-table thead { background: rgba(42,157,143,0.1); }
+.pricing-table th {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 700; color: var(--teal-bright);
+  text-transform: uppercase; letter-spacing: 2px;
+  padding: 16px 24px; text-align: left;
+}
+.pricing-table th:nth-child(2), .pricing-table th:nth-child(3) { text-align: center; }
+.pricing-table td {
+  padding: 20px 24px; font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.pricing-table td:nth-child(2), .pricing-table td:nth-child(3) { text-align: center; }
+.pricing-table .vol {
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 17px; color: #fff;
+}
+.pricing-table .price {
+  font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 24px; color: #fff;
+}
+.pricing-table .retest { font-size: 15px; color: var(--copper-light); font-weight: 500; }
+.pricing-table .best-row td { background: rgba(42,157,143,0.12); }
+.pricing-table .best-row td:first-child { border-left: 4px solid var(--teal-bright); }
+.best-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--teal), var(--teal-bright));
+  color: #fff; font-size: 10px; font-weight: 700;
+  padding: 4px 12px; border-radius: 100px;
+  margin-left: 10px; letter-spacing: 1px;
+  text-transform: uppercase; vertical-align: middle;
+  box-shadow: 0 2px 8px var(--glow-teal);
+}
+.pricing-note {
+  text-align: center; padding: 14px;
+  font-size: 13px; color: var(--text-muted);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* CREDENTIALS */
+#credentials {
+  background: linear-gradient(180deg, var(--navy-mid), var(--navy));
+  position: relative;
+}
+#credentials::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.cred-row {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; align-items: stretch;
+}
+.cred-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 32px; text-align: center;
+  max-width: 280px; flex: 1; min-width: 220px; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.cred-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--copper));
+}
+.cred-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(42,157,143,0.12); }
+.cred-card img {
+  height: 90px; margin-bottom: 14px;
+  border-radius: 8px; background: #fff; padding: 6px;
+}
+.cred-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px;
+}
+.cred-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.carb-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 28px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--teal-bright); text-decoration: none;
+  border: 1px solid rgba(42,157,143,0.35); padding: 10px 24px;
+  border-radius: 8px; transition: all 0.25s;
+}
+.carb-link:hover { background: rgba(42,157,143,0.12); border-color: var(--teal-bright); box-shadow: 0 2px 16px var(--glow-teal); }
+
+/* CONTACT */
+#contact {
+  position: relative; padding: 56px 32px;
+  background: linear-gradient(135deg, rgba(212,149,107,0.06), rgba(42,157,143,0.04));
+}
+#contact::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,149,107,0.3), transparent);
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.contact-person {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 28px; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.contact-person::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--copper), var(--copper-bright));
+}
+.contact-person:hover { border-color: var(--copper); transform: translateY(-3px); box-shadow: 0 6px 28px var(--glow-copper); }
+.contact-person-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 16px;
+}
+.contact-item {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.contact-icon-wrap {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(42,157,143,0.12); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--teal-bright); flex-shrink: 0;
+}
+.contact-item-label {
+  font-size: 10px; color: var(--text-muted); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1px;
+}
+.contact-item-value {
+  font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; color: #fff;
+}
+.contact-item-value a { color: #fff; text-decoration: none; transition: color 0.2s; }
+.contact-item-value a:hover { color: var(--teal-bright); }
+
+/* FOOTER */
+footer {
+  padding: 28px 32px; text-align: center;
+  border-top: 1px solid var(--border); background: var(--navy);
+}
+footer p { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
+footer a { color: var(--teal); text-decoration: none; }
+footer a:hover { color: var(--teal-bright); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(10,22,40,0.98); padding: 20px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-grid { grid-template-columns: 1fr; }
+  .mobile-grid { grid-template-columns: 1fr; }
+  .area-columns { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-content > * {
+  animation: fadeUp 0.6s ease-out both;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <img class="nav-logo" src="images/logo.png" alt="Caloha">
+    <div class="nav-links" id="navLinks">
+      <a href="#service-area">Service Area</a>
+      <a href="#vehicles">Vehicles</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </div>
+    <div class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-deco-line"></div>
+  <div class="hero-logo-wrap">
+    <img class="hero-logo" src="images/logo.png" alt="Caloha Air Compliance LLC">
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">OBD Testing Services</h1>
+    <p class="hero-sub">CARB-credentialed on-board diagnostics compliance testing for heavy-duty vehicles. Stay compliant with Clean Truck Check requirements.</p>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        CARB Credentialed Tester
+      </div>
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        Certified OBD Testing Device
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Schedule Your Test</a>
+      <a href="#pricing" class="btn btn-outline">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- WE COME TO YOU + SERVICE AREA -->
+<div class="mobile-service" id="service-area">
+  <div class="mobile-inner">
+    <div class="mobile-grid">
+      <div>
+        <div class="mobile-title"><span>We Come to You!</span></div>
+        <p class="mobile-desc">
+          <strong>On-site mobile testing at your yard or facility.</strong>
+          No need to take trucks out of service or travel to a testing center. We bring CARB-certified equipment directly to you&mdash;zero downtime, zero hassle.
+        </p>
+        <div class="mobile-highlight">&#9889; One truck or an entire fleet &mdash; on your schedule</div>
+      </div>
+      <div>
+        <div class="area-title">Serving <span>Southern California</span></div>
+        <div class="area-subtitle">Based in San Dimas &mdash; servicing the San Gabriel Valley, Inland Empire &amp; surrounding areas</div>
+        <div class="area-columns" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+          <div class="area-col">
+            <div class="area-col-header">San Gabriel Valley</div>
+            <ul>
+              <li>San Dimas</li>
+              <li>La Verne</li>
+              <li>Glendora</li>
+              <li>Covina</li>
+              <li>West Covina</li>
+              <li>Azusa</li>
+              <li>Baldwin Park</li>
+              <li>El Monte</li>
+              <li>Irwindale</li>
+              <li>City of Industry</li>
+            </ul>
+          </div>
+          <div class="area-col">
+            <div class="area-col-header">Foothill &amp; East</div>
+            <ul>
+              <li>Pomona</li>
+              <li>Claremont</li>
+              <li>Diamond Bar</li>
+              <li>Walnut</li>
+              <li>Rowland Heights</li>
+              <li>Monrovia</li>
+              <li>Arcadia</li>
+              <li>Duarte</li>
+              <li>Hacienda Heights</li>
+              <li>La Puente</li>
+            </ul>
+          </div>
+          <div class="area-col">
+            <div class="area-col-header">Inland Empire</div>
+            <ul>
+              <li>Upland</li>
+              <li>Rancho Cucamonga</li>
+              <li>Ontario</li>
+              <li>Fontana</li>
+              <li>Chino</li>
+              <li>Chino Hills</li>
+              <li>Montclair</li>
+              <li>Rialto</li>
+              <li>Corona</li>
+              <li>Riverside</li>
+            </ul>
+          </div>
+          <div class="area-col">
+            <div class="area-col-header">Orange County</div>
+            <ul>
+              <li>Anaheim</li>
+              <li>Fullerton</li>
+              <li>Orange</li>
+              <li>Santa Ana</li>
+              <li>Brea</li>
+              <li>Yorba Linda</li>
+              <li>Placentia</li>
+              <li>Buena Park</li>
+              <li>La Habra</li>
+              <li>Irvine</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="area-note">&#128222; Don't see your city? Give us a call &mdash; we may still be able to come to you.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VEHICLES WE TEST -->
+<section id="vehicles">
+  <div class="section-inner">
+    <div class="section-label">What We Test</div>
+    <div class="section-title">OBD-Eligible Vehicles</div>
+    <div class="section-desc">
+      Under CARB's Clean Truck Check program, OBD testing is required for heavy-duty vehicles (over 14,000 lbs GVWR) with newer engines.
+    </div>
+    <div class="vehicle-grid">
+      <div class="vehicle-card">
+        <div class="vehicle-card-icon">&#128667;</div>
+        <h3>Diesel Vehicles</h3>
+        <p>Heavy-duty diesel trucks and buses with <strong style="color:#fff">2013 or newer model year engines</strong>. Class 4&ndash;8 trucks, semis, box trucks, dump trucks, and diesel buses.</p>
+      </div>
+      <div class="vehicle-card">
+        <div class="vehicle-card-icon">&#9981;</div>
+        <h3>Alternative Fuel Vehicles</h3>
+        <p>Natural gas (CNG/LNG) and other alternative fuel heavy-duty vehicles with <strong style="color:#fff">2018 or newer model year engines</strong>.</p>
+      </div>
+      <div class="vehicle-card">
+        <div class="vehicle-card-icon">&#128268;</div>
+        <h3>Hybrid Vehicles</h3>
+        <p>Diesel-hybrid and alternative fuel hybrid heavy-duty vehicles meeting the above engine model year requirements.</p>
+      </div>
+      <div class="vehicle-card">
+        <div class="vehicle-card-icon">&#127806;</div>
+        <h3>Agricultural &amp; Motorhomes</h3>
+        <p>OBD-equipped on-road agricultural vehicles and CA-registered motorhomes over 14,000 lbs. Annual testing schedule.</p>
+      </div>
+      <div class="vehicle-card">
+        <div class="vehicle-card-icon">&#128739;</div>
+        <h3>Out-of-State Trucks</h3>
+        <p>All heavy-duty vehicles operating on California roads must comply&mdash;regardless of registration state.</p>
+      </div>
+      <div class="vehicle-card">
+        <div class="vehicle-card-icon">&#128203;</div>
+        <h3>Common Makes</h3>
+        <p>Freightliner, Peterbilt, Kenworth, Volvo, Mack, International, Western Star, HINO, Isuzu, and more.</p>
+      </div>
+    </div>
+    <div class="vehicle-note">
+      <strong>Note:</strong> We specialize in <strong>OBD testing only</strong>. Vehicles with 2012 or older diesel engines or 2017 or older alternative fuel engines require smoke opacity testing and visual inspections, which is a separate service.
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Transparent Rates</div>
+    <div class="section-title">Pricing Schedule</div>
+    <div class="section-desc">Volume discounts for fleets. All prices include on-site mobile service.</div>
+    <div class="pricing-table-wrap">
+      <table class="pricing-table">
+        <thead>
+          <tr><th>Volume</th><th>Test Price</th><th>Retest Price</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="vol">1 OBD Test</span></td>
+            <td><span class="price">$150</span></td>
+            <td><span class="retest">$75</span></td>
+          </tr>
+          <tr>
+            <td><span class="vol">2 &ndash; 4 OBD Tests</span></td>
+            <td><span class="price">$125</span></td>
+            <td><span class="retest">$60</span></td>
+          </tr>
+          <tr class="best-row">
+            <td><span class="vol">5+ OBD Tests</span><span class="best-badge">Best Value</span></td>
+            <td><span class="price">$100</span></td>
+            <td><span class="retest">$50</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pricing-note">
+        Retests available for &ldquo;Not Ready&rdquo; or &ldquo;Fail&rdquo; results. All results submitted directly to CARB on your behalf.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label">Why Trust Us</div>
+    <div class="section-title" style="margin-left:auto;margin-right:auto;">Licensed, Certified, Credentialed</div>
+    <div class="section-desc" style="margin-left:auto;margin-right:auto;">
+      CARB-credentialed testing provider using certified OBD equipment. Results submitted directly to CARB through the Clean Truck Check system.
+    </div>
+    <div class="cred-row">
+      <div class="cred-card">
+        <img src="images/carb-logo.webp" alt="California Air Resources Board">
+        <h3>California Air Resources Board</h3>
+        <p>Authorized under CARB&rsquo;s Clean Truck Check program for emissions compliance testing.</p>
+      </div>
+      <div class="cred-card">
+        <img src="images/clean-truck-check-tester.jpg" alt="Clean Truck Check Credentialed Tester">
+        <h3>Clean Truck Check Credentialed Tester</h3>
+        <p>Current credentials for OBD emissions compliance testing on heavy-duty vehicles.</p>
+      </div>
+    </div>
+    <a class="carb-link" href="https://ww2.arb.ca.gov/our-work/programs/CTC" target="_blank" rel="noopener">
+      CARB Clean Truck Check &mdash; Compliance Updates <span>&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <div class="section-title">Schedule Your Test Today</div>
+    <div class="section-desc">Reach out to book your OBD compliance test. We come to your location on your schedule.</div>
+    <div class="contact-grid">
+      <div class="contact-person">
+        <div class="contact-person-name">Scotty Duran</div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">&#9742;</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value"><a href="tel:6263880066">(626) 388-0066</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">&#9993;</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhAAAAAnCAYAAABe4HG1AAAPaUlEQVR4nO2de7QdVX3Hvz8IgQiJgASFQHhp1WKhobRWE2K0WEDksaqAYKmlgoAVibHYaq0sREWX8hDaNEVARe2iQsGgAhqR8qYQCClJqNVFUspDXpIneZDk0z/2HDN3zp45M+fM3HPu5fdZ665z7p69f/v12/vs2Y/flhzHcRzHcRzHcRzHcRzHqQDwWdq5a7TG6wwuZXXCdccZqYzpdwKcZgH2lnSkpMMl7SfpdZLGS1ot6XFJiyT9XNINZvabPiXTcRzHGWFs1e8E9JvIyB9gRtNhmwY4AJgraamkf5T0XklvlrSTwsBxR0kHSDpJ0hWSngKuBCb3J8WO4zjOSOIVP4AYbQBjgEskPSzp6ApBt5X0V5KWAKc3kDTHcRxnFOFLGKMI4DWS/l3SO1LO6yTdJOlGSfMlPSlpjaSJknaTNF3SUZJmSDJJ20uaA7zJzD4xbIl3HMdxnJHEaFnCAMYCd2bSMgd4XcnwU4CfZ8Kf23S66wbfROkMCK4TzmjHlzBGD3MkTUu+r5V0opmdYWa/LhPYzBaY2bskfTnl/DngbTWn03EcxxkFdBxAANsBpwDXAkuAFcDLyeevgHuBbwOfAA4Gtu4gbyxwAnAV8AjwHLABeD75/7okvtd2kLMj8DHgeuCxJD0bEnkLgcuBIwGLhL2i9TqQI/62yJvDNb2ETdKaZUGHPJ4ZCbMw4m+apFOSfzdKOszMrimSnYeZfVrS+cm/W0m6tFOYbusUODySvxabgdXAU4SZlcuAP+kmTyXS37UuVYjjeOCnwDPAeuAJQpua3iFcY2XUbb1F5PRcfsAXIvm7K3k2DjgnkbUGeBq4CTgiI2Mb4CPAXcALwNokPVcBv9chD7mzBcDWwKnAHUme1hL6vtnAG8qWdzdxR/zWqg+d4qZLvU2Fr0vHdgBOB74P/BJYnsj5NXA3cB6wZ5k0dUON+RjxbaVKoR0I/G9UVfP5QIG8E5MKL8N9OTIMmEVoKGVYAhyckXFFp0AR2gYQVcIC2wMvRp69taC8bo/4/1jE3z2p55+JPP8D4N8IyrQO+AVBybYCFqXCTkv8b0UYGLZ4exN1SnFnmMe9FJwUoVpn3LMudYoXmAD8qIPcTxfkp/Yy6rXeGiq/aKcI7AEsKJB5aRJ+EnBfgb/1wEkF5ZFXfxOTzyK5p1WR2a2/xG+t+pAXNz3qbSK7Zx1L5JxBGDB0Yj3weaDWmfU68sEoaitlC21bYFnJzKaJDiCACyvKaasIQiV8p4s0bQDek5Iz7AOIJOxXI8++mVNek4BNGb9rgR0z/qakni8g03gIo8yNOen6JpEBRBLu2JT7BU3UKd11hhDe/sblpKlsp12LLnWI9wHgthIyNwOH5OSniTIamLaYkhfrFOcDD5aQeTbwcAl/64B9K+jNfIYOzoto63BzZPZjAAE5+pATdx1627OOJXL+paIcCC9sXc8W1p0PRllbKVtwR0aE3g38MTCesLSxL/BBwtvt+sRP2wCCMPUU41HCtNCuhCmiNwB/S5gWilXEp3LkfAnYkzDo+SOGvj23WA3sFZEZY0bJMqoUFphM+4/5S2QGBYnfWRHZV0f8nZt6fnLm2dRIfFnWpL6nBxDbp8LeGom35zoF3k0YCZ8HvAv43STcGMJU3H7AR4m/fZydU8ZlO+1adSkn3hZfS2SOAz5M6BiyfD8nP7WWEQPaFol3ihA6stMIfc5k4JYcfxA60SnAq4BjGKrbLb5SQW9anA/sTujzZhDKKssKYGKXulhlAFG3PtSut9SnY2fnyPkqQRe2TcrgsYifc2LlV4Ua8zGq2krZwjsrIvCdBf4nAhcBx2bcxxMKNssCYHyOrF3IvPUS1o5WRORcFAk/AXgy4vdbEb8xZpQso8phCWt4WWIN+/6Iv7Z1R7acvNgETMg8m5cKu56wT2XX5O+vCTMaaaZlwj+duC/KuNdSp2UB/iES1y05fjt2xjSgSznxAlwVkRmbiXqym7KpUkYMcFskv1M8J+NvSo6/1WROHBHWc7Pk/TDn1d/FEb+TCQP/LOeWkDkspqwp2WYK8t2V3lKfjk0gvuQ7OxL+AMJsSJqVwM7VS672fIy6tlK2AP8yIvBiYJuKco7LycS0zqGHyDkxImMzsHuO/1gDWplNf07aZpRMU+WwwNsjYZZk/OwX8fOLHHmtZab/zri/irDZtUXbjzfwmUwc2QFES5kXZ9xrqdOUvEMIunVHEudq2juELI/myCozgKhdl3LiBfidiLxY/C83XUYMcFsk3iluBHbKyBqXk4fvRuI9O+LvVzlpzKu/PXL8x6akHywhs5YBBDW1mYJ8d6W31KdjJ0RkbCLYuon5nxfx/9EqcTaUj1HXVtIUbTb5D0mbMm4zJT1DsBdwOWFq5ihg1wI5sQJ/1syqjm5ixwmXmtlTOf7vibiNl/SWivHWipndI+n+jPObgbTxp9g+km/kiGzt+n06476HhhoKi72x35SXTmCHlOxnMo9rqVPCrNWtku5Q0K1DJO2uYMyq0xrmDlXiyjBcuvS8mf1PxH1FxG0M0GbYreYyGmltcamZvZh2MLO1kjZE/GbblCS9GHHbrkOcaR43sydynt0bcTswVod1Mkxtphe9rUvHpkbcFprZCzn+l0TccmfMS+BtpURbyVV2M1sGfFHS5zKPdlKomCGVA8yXdJmk75hZ+ohjzJDR0k4JixA7HpP9YUuTZ/+glGGlhrlE0r9m3E6XdHvyPTuAeFnStzvIzNZlmU1ERX7eL6l1JDercD3XKeG47y2SDqoSLkUvm6SGS5cez3EvnG1o0UAZjbS2+HyO+8uSxmbcnov4qzRbGqEoT7FnW0vaWdKzPcYbZRjbTC9626SOTYHc4/Mxut8E6G2lFIXHXczsXEnHKvywbe4g62CFH7lLuklICWLKX0WZeglTN9dKyr7ZvC95u9hf7aPNuWYWq3RpizLulnF/QsEmRIvDI2HbdvhKEjBJ0pdSTtflxN0Lf6Z4R3iNpCmStrcESWfWHPdw6dLaLsO16GcZFTFc5ZedAS0i9uPW6078Qegr0gyXPvSqt3VQxymK6HLHMDOq20rH6TYzmytpLvBqhUHCGyXtk3xOVRhxpzkLuMzMWusnsRHVPl2kNSanaFSWZ9CjaPQ3LJjZRuCfJKX3JYxVMAY1IRIkb/lCCgOFvSTtDezcupLbzNYAt0tqGZKZBTyt0NlslnScpL/PyNqRcJLjAm0ZkFxnZvMz/uqo05iBm/+S9EEzyw5W6+4IRoou1V1G3harUTVPmyT9pqG0SP1tM2VpUseq0stykreVEpQ2uGFmK8zsVjObbWbnmNnRkiYpXNA0xKuktOGhuyPidgVia1xFxNYc9wGyb94tYsaPVklaFHHvB5dLeinj9hG1L18sk/SzAjm3JZ9bSzoy8+w8bZk5Givp6wqK+Jyk2QprXGtS/n8o6WqFepVC53RqJM466jS2b+ahSEcoDb0crA5Gii7VXUbeFqsxOZmNixFb215oZhsj7nXRzzZTlrp0LLYX4CGrRtsGWOLHW9/fYD5GdVvJHUAAv08wmpTXgGRm6yQtjjxKGyy5WfFR+aXJRr1Y3K8Gzs843yxpZTYJkj4ZCT9eYU9BluvNLDt9E5uuKzt67zpsMlOQteuwX/KX5sqcDqLFj1LfZ5IyoGJmd0o6S/nLT1coDFCyIOlbkg4xs9jGqTrqNCb3jZFw75R0aExmDzSlS3VTdxkNelscRNpupCVYdXxfxO+NDaeln22mLHXqWDa/BwGHdUoA8FbgRiJ2fyrgbaUERTMQYyR9WNIy4AcEQyL7J4W0DcGwypmSToiE/e2RQjNbJemzET8HSfpPwnGZXQgGOfYFPi7pUUnvTns2s+WSvhiRM4twrGVSIuMPFTYaZUefayTFbpdcFnE7E9ibDvd69BhWCvtFita2NkmKWqpMcb+k1v0YB2nLnRiSJDObrfC2dK3C7MMGSb+U9ClJZyTeNktarjDq/rKkN5nZKWaWVfyWzDrq9M5I+Lcldflagu37kyXdoHrWQ9PpX65mdKluai2jEdAWB5FZBKNNuxEM/rxDIU9Zq44rJf1zw2npW5spS406tkJhBjXLDcAFyQvuTomc3YBDCUb1Fku6T9JR6qEMvK30COFirG6YT/wCq0sqyskzCfrdLtIUNQmayCxrqrTNLnkvYVMybioI98OSdXVEKsxLFNyvEQk7ji7NvtJDnRKs+i0tEWYtcSMn0eN1VDNlXZsulY038XtojuwxGX9NldHAtUUKLgiK+I3dJ9A2DU24ACtLFb2ZT9w6YIzGTVnTgD6UjTvxW0pvE78961gi5xsV5aTZOyKv7BJGbflglLWVNHVf532PpGMyxzglSWY2U9KHFD9CUopE7smS/kZD1+6LeFTSVDPLs3nwFcVnEsrQS9gWbZbuUhRtnvwtZnazpOuTf8dJ+jFQagrTzNaaGYQLtC6KKWxB2Jnqsk6T5a+jJeWdh5bCFObxip9b7omGdKlWmiqjAW6Lg8Y6Sccovo7dYoOk080seyy7dvrdZqpQh44lck5TOFGyvPdUdRX/THlbyaVoAPGgwvrayQr2HW5XyNSzCsdA1isU6gMKU3eHmdlUM8s1yWtmV0vaU9JJCkc+FyusM21MPhcr/BCeqtBwYzIwswsVpno+LukHCj/iqxI5L0h6RGF9/72S9jezBwrS9KzCtNTnk7ysUOcjqz2HTcmYp/g+kqck/biCqL+Q9HDy/TWSfkKwZb9Lp4CE61vnKaz3fo1yyy+SeqtTM3tE0gEKU3yLFPaUrFZYArtQ0oFmVmoWphvq1qWG0thIGQ1iWxxEkjY+XeFH7G6FPK2T9JikOZLeYmaXD2N6+tpmqlCHjiVy5ihs7D5F0vcU8vpiImeVgt2KhZJ+ovBSd5ykfc1s2aDk45XQVpw+AcyMTB/F1s06yZkEPJSRswq4EjgeeD3B3vo4wgUwfw7Mpf3Wzw81kU/HGVRo4D4Kx3GcxiFcP5tmI9DNmePWnoarI51hGTYDXwe2rTuPjjPI+ADCcZwRA2FjzUTgk7RfgvO9GuRPJ1y0U5af0uVlWI4z0vEBhONUp9GLX5w4UGjPfaWkv+s1DjO7Q9J0wv6GIxTOhe+lYOlsO4UjnUsV9j7cmKytOo7jOI4zqBTMAqwB/rTf6XOcVxo+A+E41fEZiP6zUmEX8TxJF5vZ//U5PY7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jOI7jjBD+H8IP/PDmDMpAAAAAAElFTkSuQmCC" alt="Email" style="height:18px;vertical-align:middle;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-person">
+        <div class="contact-person-name">Taylor Duran</div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">&#9742;</div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value"><a href="tel:6269261825">(626) 926-1825</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-wrap">&#9993;</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value"><img src="data:image/png;base64,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" alt="Email" style="height:18px;vertical-align:middle;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</secti
